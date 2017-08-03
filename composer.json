@@ -1,0 +1,12 @@
+{
+  "name": "rauwebieten/psr7-partial-download",
+  "require": {
+    "php": ">=5.4.0",
+    "psr/http-message": "^1.0.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "RauweBieten\\Psr7PartialDownload\\": "src/"
+    }
+  }
+}
