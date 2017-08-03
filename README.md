@@ -1,11 +1,20 @@
 # PSR-7 Partial download
 
-Partial downloads. Why?
+Partial downloads with PSR-7 libraries.
 
 - Resuming downloads
 - Audio streaming
 
-## Example
+Based on code by pomle
+https://github.com/pomle/php-serveFilePartial
+
+## Installation
+
+```
+composer require rauwebieten/psr7-partial-download
+```
+
+## Usage
 
 ```php
 // in your controller class / callback
