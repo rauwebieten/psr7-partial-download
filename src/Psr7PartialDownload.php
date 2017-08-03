@@ -1,6 +1,6 @@
 <?php
 
-namespace RauweBieten\SlimPartialDownload;
+namespace RauweBieten\Psr7PartialDownload;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

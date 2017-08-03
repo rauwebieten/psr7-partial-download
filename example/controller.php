@@ -3,7 +3,7 @@ namespace example;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use RauweBieten\SlimPartialDownload\Psr7PartialDownload;
+use RauweBieten\Psr7PartialDownload\Psr7PartialDownload;
 
 class MyController
 {
