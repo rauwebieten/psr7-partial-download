@@ -29,8 +29,9 @@ class Psr7PartialDownload
         $invalidChars = array('<', '>', '?', '"', ':', '|', '\\', '/', '*', '&');
         $fileName = str_replace($invalidChars, '', $fileName);
 
-        if (preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT'])) {
-            $fileName = rawurlencode($fileName);
+        // normalize to prevent utf8 problems
+        if (class_exists('\Normalizer')) {
+            $fileName = preg_replace('/\p{Mn}/u', '', \Normalizer::normalize($fileName, \Normalizer::FORM_KD));
         }
 
         $response = $response->withHeader('Content-Type', $contentType);
