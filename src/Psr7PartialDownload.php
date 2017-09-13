@@ -29,6 +29,10 @@ class Psr7PartialDownload
         $invalidChars = array('<', '>', '?', '"', ':', '|', '\\', '/', '*', '&');
         $fileName = str_replace($invalidChars, '', $fileName);
 
+        if (preg_match('/MSIE/', $_SERVER['HTTP_USER_AGENT'])) {
+            $fileName = rawurlencode($fileName);
+        }
+
         $response = $response->withHeader('Content-Type', $contentType);
         $response = $response->withHeader('Accept-Ranges', 'bytes');
         $response = $response->withHeader('Content-Disposition', "attachment; filename=\"{$fileName}\"");
