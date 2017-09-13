@@ -25,8 +25,12 @@ class Psr7PartialDownload
         $byteOffset = 0;
         $byteLength = $fileSize = filesize($filePath);
 
+        // clean up filename
+        $invalidChars = array('<', '>', '?', '"', ':', '|', '\\', '/', '*', '&');
+        $fileName = str_replace($invalidChars, '', $fileName);
+
         $response = $response->withHeader('Accept-Ranges', 'bytes');
-        $response = $response->withHeader('Content-Disposition', "attachment; filename=$fileName");
+        $response = $response->withHeader('Content-Disposition', "attachment; filename=\"{$fileName}\"");
 
         $server = $request->getServerParams();
 
