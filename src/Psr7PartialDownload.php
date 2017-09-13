@@ -29,6 +29,7 @@ class Psr7PartialDownload
         $invalidChars = array('<', '>', '?', '"', ':', '|', '\\', '/', '*', '&');
         $fileName = str_replace($invalidChars, '', $fileName);
 
+        $response = $response->withHeader('Content-Type', $contentType);
         $response = $response->withHeader('Accept-Ranges', 'bytes');
         $response = $response->withHeader('Content-Disposition', "attachment; filename=\"{$fileName}\"");
 
@@ -48,7 +49,7 @@ class Psr7PartialDownload
         }
 
         $byteRange = $byteLength - $byteOffset;
-        $response = $response->withHeader('Content-Langth', $byteRange);
+        $response = $response->withHeader('Content-Length', $byteRange);
         $response = $response->withHeader('Expires', date('D, d M Y H:i:s', time() + 60*60*24*90) . ' GMT');
 
         $bufferSize = 512*16;
